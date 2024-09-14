@@ -6,6 +6,9 @@
 # Testing
 /coverage
 
+node_modules/
+.env
+
 # Production
 /build
 /dist
