@@ -1,18 +1,20 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-
+import cors from 'cors';
 import authRouter from './routes/auth.route.js' 
+import userRouter from './routes/user.route.js' 
+import itineraryRouter from './routes/itinerary.route.js'
 import cookieParser from 'cookie-parser';
 import path from "path"
 dotenv.config()
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URL).then(() => {
-    console.log('Connected to MongoDB !!') 
+    console.log('Connected to MongoDB') 
 })
 .catch((err) => {
-    console.log("Error connecting to MongoDB", err)
+    console.log(err)
 })
 
 // resolves a sequence of paths  into an absolute path.
@@ -20,6 +22,16 @@ const __dirname = path.resolve();
 
 const app = express();
 
+// CORS configuration
+app.use(cors({
+    origin: 'http://localhost:5173', // or your frontend URL
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true,
+  }));
+  
+  // Handle preflight requests
+  app.options('*', cors());
 // Middleware
 app.use(express.json());
 app.use(cookieParser());
@@ -30,7 +42,11 @@ app.listen(3000, () =>{
 })
 
 // Routes
+console.log("authRouter--------------------------------------------")
 app.use("/api/auth", authRouter)
+app.use("/api/user", userRouter)
+app.use("/api/itinerary", itineraryRouter)
+
 
 
 // set static folder
