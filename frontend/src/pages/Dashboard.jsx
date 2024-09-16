@@ -13,9 +13,9 @@ function Dashboard() {
           Create New Itinerary
         </Link>
       </div>
-      <div>
+      {/* <div>
         <ProfileSummary />
-      </div>
+      </div> */}
     </div>
   );
 }

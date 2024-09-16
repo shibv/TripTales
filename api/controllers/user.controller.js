@@ -13,12 +13,14 @@ export const getProfile = async (req, res, next) => {
 };
 
 export const updateProfile = async (req, res, next) => {
-  if (req.user.id !== req.params.id) {
-    return next(errorHandler(401, 'You can only update your own account!'));
-  }
+  // if (req.user.id !== req.params.id) {
+  //   return next(errorHandler(401, 'You can only update your own account!'));
+  // }
+
   try {
+  
     const updatedUser = await User.findByIdAndUpdate(
-      req.params.id,
+      req.body.id,
       {
         $set: {
           username: req.body.username,

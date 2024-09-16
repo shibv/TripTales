@@ -3,12 +3,21 @@ import { errorHandler } from '../utils/error.js';
 
 export const createItinerary = async (req, res, next) => {
   try {
+    
+    const { destination, startDate, endDate, travelers, interests, budget, specialRequirements } = req.body;
     const newItinerary = new Itinerary({
-      ...req.body,
-      user: req.user.id,
+      destination,
+      startDate,
+      endDate,
+      travelers: Number(travelers),
+      interests,
+      budget,
+      specialRequirements,
+      userId: req.user.id
     });
-    await newItinerary.save();
-    res.status(201).json(newItinerary);
+
+    const savedItinerary = await newItinerary.save();
+    res.status(201).json(savedItinerary);
   } catch (error) {
     next(error);
   }
@@ -16,7 +25,10 @@ export const createItinerary = async (req, res, next) => {
 
 export const getItineraries = async (req, res, next) => {
   try {
-    const itineraries = await Itinerary.find({ user: req.user.id }).populate('destination');
+    console.log(req.user , "User")
+
+    const itineraries = await Itinerary.find({ userId: req.user.id }).populate('destination');
+    console.log(itineraries , "Itineraries")
     res.status(200).json(itineraries);
   } catch (error) {
     next(error);
@@ -25,11 +37,14 @@ export const getItineraries = async (req, res, next) => {
 
 export const getItinerary = async (req, res, next) => {
   try {
+    
     const itinerary = await Itinerary.findById(req.params.id).populate('destination');
     if (!itinerary) return next(errorHandler(404, 'Itinerary not found'));
-    if (itinerary.user.toString() !== req.user.id) {
+  
+    if (itinerary.userId.toString() !== req.user.id) {
       return next(errorHandler(401, 'You can only view your own itineraries'));
     }
+    console.log(itinerary , "Itinerary")
     res.status(200).json(itinerary);
   } catch (error) {
     next(error);

@@ -16,7 +16,7 @@ function PreferencesForm({ onNext, onPrev }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onNext();
+    onNext({ interests, budget });
   };
 
   return (

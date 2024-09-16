@@ -7,7 +7,7 @@ function TripDetails({ onNext, onPrev }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onNext();
+    onNext({ startDate, endDate, travelers });
   };
 
   return (

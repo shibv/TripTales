@@ -6,7 +6,7 @@ function DestinationSelector({ onNext }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (destination) {
-      onNext();
+      onNext({ destination });
     }
   };
 

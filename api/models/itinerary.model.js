@@ -1,31 +1,40 @@
 import mongoose from 'mongoose';
 
 const itinerarySchema = new mongoose.Schema({
-  user: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
-    required: true,
-  },
   destination: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Destination',
-    required: true,
+    type: String,
+    required: true
   },
   startDate: {
     type: Date,
-    required: true,
+    required: true
   },
   endDate: {
     type: Date,
-    required: true,
+    required: true
   },
-  activities: [{
-    day: Number,
-    description: String,
-    location: String,
-  }],
-  budget: Number,
-  notes: String,
+  travelers: {
+    type: Number,
+    required: true
+  },
+  interests: {
+    type: [String],
+    default: []
+  },
+  budget: {
+    type: String,
+    enum: ['budget', 'medium', 'luxury'],
+    default: 'medium'
+  },
+  specialRequirements: {
+    type: String,
+    default: ''
+  },
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
+  }
 }, { timestamps: true });
 
 const Itinerary = mongoose.model('Itinerary', itinerarySchema);

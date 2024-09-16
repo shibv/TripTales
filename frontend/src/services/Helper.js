@@ -27,6 +27,41 @@ export const signup = async (username, email, password) => {
 export const logout = () => api.get('/auth/signout"');
 export const getProfile = () => api.get('/user/profile');
 export const updateProfile = (userData) => api.put('/user/profile', userData);
-export const createItinerary = (itineraryData) => api.post('/itinerary', itineraryData);
-export const getItineraries = () => api.get('/itinerary');
-export const getItinerary = (id) => api.get(`/itinerary/${id}`);
+// export const createItinerary = (itineraryData) => api.post('/itinerary/create', itineraryData);
+// export const createItinerary = async (itineraryData, userData) => {
+//   const response = await fetch('/api/itinerary/create', {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json',
+//     },
+//     body: JSON.stringify(itineraryData),
+//     user: userData,
+//   });
+
+//   if (!response) {
+//     const errorData = await response.json();
+//     throw new Error(errorData.message || 'Failed to create itinerary');
+//   }
+
+//   return response.json();
+// };
+export const createItinerary = async (itineraryData, userData) => {
+  const response = await fetch('/api/itinerary/create', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(itineraryData),
+    user: userData,
+  });
+
+  if (!response.ok) {
+    const errorData = await response.json();
+    throw new Error(errorData.message || 'Failed to create itinerary');
+  }
+
+  return response.json();
+};
+export const getItineraries = (userData) => api.get('/itinerary', {user : userData});
+export const getItinerary = (id, userData) => api.get(`/itinerary/${id}`, { user: userData });
+// export const getUserItineraries = () => api.get('/itineraries/user');

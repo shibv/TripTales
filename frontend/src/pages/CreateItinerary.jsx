@@ -5,8 +5,12 @@ import TripDetails from '../components/itinerary/TripDetails';
 import PreferencesForm from '../components/itinerary/PreferencesForm';
 import SpecialRequirements from '../components/itinerary/SpecialRequirements';
 import { createItinerary } from '../services/Helper';
+import toast from 'react-hot-toast';
+import { useSelector } from 'react-redux';
 
 function CreateItinerary() {
+
+  const { currentUser } = useSelector((state) => state.user);
   const [step, setStep] = useState(1);
   const [itineraryData, setItineraryData] = useState({});
   const navigate = useNavigate();
@@ -16,11 +20,18 @@ function CreateItinerary() {
 
   const handleSubmit = async (finalData) => {
     try {
-      const response = await createItinerary({ ...itineraryData, ...finalData });
-      navigate(`/itinerary/${response.data.id}`);
+      const fullData = { 
+        ...itineraryData, 
+        ...finalData,
+        travelers: Number(itineraryData.travelers) // Ensure travelers is a number
+      };
+      console.log("Submitting itinerary data:", fullData);
+      const response = await createItinerary(fullData, currentUser);
+      toast.success('Itinerary created successfully!');
+      navigate(`/itinerary/${response._id}`);
     } catch (error) {
+      toast.error(error.message || 'Failed to create itinerary');
       console.error('Failed to create itinerary', error);
-      // Handle error (e.g., show error message to user)
     }
   };
 

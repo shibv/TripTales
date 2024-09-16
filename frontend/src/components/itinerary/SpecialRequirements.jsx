@@ -1,15 +1,11 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
-function SpecialRequirements({ onPrev }) {
+function SpecialRequirements({ onSubmit, onPrev }) {
   const [requirements, setRequirements] = useState('');
-  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Here you would typically save the itinerary data
-    // For now, we'll just navigate to the dashboard
-    navigate('/dashboard');
+    onSubmit({ specialRequirements: requirements });
   };
 
   return (

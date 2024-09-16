@@ -32,7 +32,7 @@ function LoginForm() {
         body: JSON.stringify(formData),
       });
       const data = await response.json();
-      if (data.success === false) {
+      if (!data) {
         dispatch(signInFaliure(data.message));
         toast.error(`Something Went Wrong : ${data.message}`);
         return;
