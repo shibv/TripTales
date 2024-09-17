@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-
 const itinerarySchema = new mongoose.Schema({
   destination: {
     type: String,
@@ -34,7 +33,14 @@ const itinerarySchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
     required: true
-  }
+  },
+  locations: [{
+    name: String,
+    location: {
+      lat: Number,
+      lng: Number
+    }
+  }]
 }, { timestamps: true });
 
 const Itinerary = mongoose.model('Itinerary', itinerarySchema);

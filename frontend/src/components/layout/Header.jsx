@@ -13,7 +13,7 @@ function Header() {
     <header className="bg-indigo-600 text-white">
       <nav className="container mx-auto px-6 py-3 flex justify-between items-center">
         <Link to="/" className="text-xl font-bold">
-          TravelPal
+          triptales
         </Link>
         <div>
           {currentUser ? (

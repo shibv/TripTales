@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getItinerary } from '../services/Helper';
 import { useSelector } from 'react-redux';
+import ItineraryMap from '../components/itinerary/ItineraryMap';
 
 function ViewItinerary() {
   const [itinerary, setItinerary] = useState(null);
@@ -9,7 +10,7 @@ function ViewItinerary() {
   const [error, setError] = useState(null);
   const { id } = useParams();
   const { currentUser } = useSelector((state) => state.user);
-  console.log(itinerary);
+
   useEffect(() => {
     const fetchItinerary = async () => {
       try {
@@ -71,6 +72,10 @@ function ViewItinerary() {
         )}
         
         {/* You can add more sections here as needed, such as a detailed day-by-day plan if that's part of your itinerary data */}
+        <div className="mt-8">
+          <h3 className="text-xl font-semibold mb-4">Travel Route</h3>
+          <ItineraryMap destinations={itinerary.locations} />
+        </div>
       </div>
     </div>
   );

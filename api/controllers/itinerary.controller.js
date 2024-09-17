@@ -3,8 +3,8 @@ import { errorHandler } from '../utils/error.js';
 
 export const createItinerary = async (req, res, next) => {
   try {
-    
-    const { destination, startDate, endDate, travelers, interests, budget, specialRequirements } = req.body;
+    const { destination, startDate, endDate, travelers, interests, budget, specialRequirements, locations } = req.body; // Added locations
+    console.log(req.body)
     const newItinerary = new Itinerary({
       destination,
       startDate,
@@ -13,7 +13,8 @@ export const createItinerary = async (req, res, next) => {
       interests,
       budget,
       specialRequirements,
-      userId: req.user.id
+      userId: req.user.id,
+      locations // Added locations
     });
 
     const savedItinerary = await newItinerary.save();
@@ -24,11 +25,10 @@ export const createItinerary = async (req, res, next) => {
 };
 
 export const getItineraries = async (req, res, next) => {
+  // console.log("Itinaeries Hello !!")
   try {
-    console.log(req.user , "User")
-
+    // console.log(req.user, req.body , "User id")
     const itineraries = await Itinerary.find({ userId: req.user.id }).populate('destination');
-    console.log(itineraries , "Itineraries")
     res.status(200).json(itineraries);
   } catch (error) {
     next(error);
@@ -44,7 +44,7 @@ export const getItinerary = async (req, res, next) => {
     if (itinerary.userId.toString() !== req.user.id) {
       return next(errorHandler(401, 'You can only view your own itineraries'));
     }
-    console.log(itinerary , "Itinerary")
+    // console.log(itinerary , "Itinerary")
     res.status(200).json(itinerary);
   } catch (error) {
     next(error);

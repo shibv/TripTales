@@ -22,41 +22,7 @@ import SignupForm from "./components/auth/SignupForm.jsx";
 
 function App() {
   return (
-    // <AuthProvider>
-    //   <Router>
-    //     <div>
-    //       <Toaster position="top-center" />
-    //     </div>
-    //     <Layout>
-    //       <Routes>
-    //         <Route path="/" element={<Home />} />
-    //         <Route path="/login" element={<LoginForm />} />
-    //         <Route path="/signup" element={<SignupForm />} />
-    //         <Route path="/dashboard" element={
-    //           <ProtectedRoute>
-    //             <Dashboard />
-    //           </ProtectedRoute>
-    //         } />
-    //         <Route path="/create-itinerary" element={
-    //           <ProtectedRoute>
-    //             <CreateItinerary />
-    //           </ProtectedRoute>
-    //         } />
-    //         <Route path="/itinerary/:id" element={
-    //           <ProtectedRoute>
-    //             <ViewItinerary />
-    //           </ProtectedRoute>
-    //         } />
-    //         <Route path="/explore" element={<Explore />} />
-    //         <Route path="/profile" element={
-    //           <ProtectedRoute>
-    //             <Profile />
-    //           </ProtectedRoute>
-    //         } />
-    //       </Routes>
-    //     </Layout>
-    //   </Router>
-    // </AuthProvider>
+
     <Router>
       <div>
         <Toaster position="top-center" />

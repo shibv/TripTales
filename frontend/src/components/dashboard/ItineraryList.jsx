@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getItineraries } from '../../services/Helper';
 import { useSelector } from 'react-redux';
+import toast from 'react-hot-toast';
 
 function ItineraryList() {
   const { currentUser } = useSelector((state) => state.user);
@@ -24,8 +25,8 @@ function ItineraryList() {
     fetchItineraries();
   }, []);
 
-  if (loading) return <div className="text-center">Loading...</div>;
-  if (error) return <div className="text-center text-red-500">{error}</div>;
+  // if (loading) return <div className="text-center">Loading...</div>;
+  // if (error) return <div className="text-center text-red-500">{error}</div>;
 
   return (
     <div className="bg-white rounded-lg shadow overflow-hidden">
