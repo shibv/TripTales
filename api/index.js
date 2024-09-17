@@ -31,7 +31,7 @@ const app = express();
 //   }));
   
   // Handle preflight requests
-app.options('*', cors());
+// app.options('*', cors());
 // Middleware
 app.use(express.json());
 app.use(cookieParser());
