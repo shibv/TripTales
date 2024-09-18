@@ -117,8 +117,8 @@ function Profile() {
                   name="username"
                   value={formData.username}
                   onChange={handleChange}
-                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                />
+                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 p-3 text-gray-800 placeholder-gray-400"
+                  />
               </div>
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
@@ -128,8 +128,8 @@ function Profile() {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                />
+                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 p-3 text-gray-800 placeholder-gray-400"
+                  />
               </div>
             </div>
             <div className="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-6">
@@ -140,8 +140,8 @@ function Profile() {
                   name="preferences.travelStyle"
                   value={formData.preferences.travelStyle}
                   onChange={handleChange}
-                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                >
+                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 p-3 text-gray-800"
+                  >
                   <option value="">Select a travel style</option>
                   <option value="Adventure">Adventure</option>
                   <option value="Relaxation">Relaxation</option>
@@ -156,8 +156,8 @@ function Profile() {
                   name="preferences.budget"
                   value={formData.preferences.budget}
                   onChange={handleChange}
-                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                >
+                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 p-3 text-gray-800"
+                  >
                   <option value="">Select a budget range</option>
                   <option value="Budget">Budget</option>
                   <option value="Mid-range">Mid-range</option>
@@ -174,8 +174,8 @@ function Profile() {
                       type="checkbox"
                       checked={formData.preferences.interests.includes(interest)}
                       onChange={() => handleInterestChange(interest)}
-                      className="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                    />
+                      className="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                      />
                     <span className="ml-2 text-sm text-gray-700">{interest}</span>
                   </label>
                 ))}

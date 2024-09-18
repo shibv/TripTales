@@ -47,10 +47,11 @@ function CreateItinerary() {
         ...finalData,
         travelers: Number(itineraryData.travelers) // Ensure travelers is a number
       };
-      console.log("Submitting itinerary data:", fullData);
+      
       const response = await createItinerary(fullData);
+      console.log(response)
       toast.success('Itinerary created successfully!');
-      navigate(`/itinerary/${response.data._id}`);
+      navigate(`/itinerary/${response._id}`);
     } catch (error) {
       toast.error(error.message || 'Failed to create itinerary');
       console.error('Failed to create itinerary', error);

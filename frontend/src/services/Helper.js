@@ -62,6 +62,6 @@ export const createItinerary = async (itineraryData, userData) => {
 
   return response.json();
 };
-export const getItineraries = (userData) => api.get('/itinerary', {user : userData});
+export const getItineraries = (userData) => api.get('/itinerary/', {user : userData});
 export const getItinerary = (id, userData) => api.get(`/itinerary/${id}`, { user: userData });
 // export const getUserItineraries = () => api.get('/itineraries/user');

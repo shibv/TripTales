@@ -7,6 +7,7 @@ function DestinationSelector({ onNext, selectedLocations }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (destination) {
+      console.log(destination)
       onNext({ destination });
     }
   };
@@ -17,7 +18,7 @@ function DestinationSelector({ onNext, selectedLocations }) {
         <label className="block text-sm font-medium text-gray-700">Select Destination</label>
         <Select
           options={selectedLocations}
-          onChange={setDestination}
+          onChange={(e) => {setDestination(e.label)}}
           placeholder="Select a destination..."
           isClearable
            menuPlacement="top"

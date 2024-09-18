@@ -30,9 +30,9 @@ const app = express();
 //     credentials: true,
 //   }));
   
-  // Handle preflight requests
-// app.options('*', cors());
-// Middleware
+//   // Handle preflight requests
+//   app.options('*', cors());
+// // Middleware
 app.use(express.json());
 app.use(cookieParser());
 
@@ -42,7 +42,6 @@ app.listen(3000, () =>{
 })
 
 // Routes
-
 app.use("/api/auth", authRouter)
 app.use("/api/user", userRouter)
 app.use("/api/itinerary", itineraryRouter)

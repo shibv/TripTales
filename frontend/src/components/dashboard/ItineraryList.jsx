@@ -14,12 +14,11 @@ function ItineraryList() {
     const fetchItineraries = async () => {
       try {
         const response = await getItineraries(currentUser);
+        console.log("response", response);
         setItineraries(response.data);
       } catch (error) {
         console.error('Error fetching itineraries:', error);
         setError('Failed to load itineraries');
-      } finally {
-        setLoading(false);
       }
     };
     fetchItineraries();
@@ -62,7 +61,7 @@ function ItineraryList() {
         ))
       ) : (
         <div className="text-center py-4"> 
-          <p>No itineraries found</p>
+          <p>No itineraries found , {error}</p>
         </div>
       )}
     </div>
