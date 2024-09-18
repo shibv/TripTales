@@ -71,16 +71,18 @@ function Profile() {
         dispatch(updateUserStart())
         //  const response = await updateProfile(formData)
         formData.id = currentUser._id
-        const response = await updateProfile(formData)
-        // const res = await fetch(`/api/user/profile`, {
-        //   method: "POST",
-        //   headers: {
-        //     "Content-Type": "application/json",
-        //   }
-        //   ,body: JSON.stringify(formData),
-        // });
-        // const data = await res.json();
-        dispatch(updateUserSuccess(response.data))
+        // const response = await updateProfile(formData)
+        const res = await fetch(`/api/user/profile`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          }
+          ,body: JSON.stringify(formData),
+        });
+
+        const data = await res.json();
+        console.log(data);
+        dispatch(updateUserSuccess(data))
         toast.success("Profile updated successfully")
     } catch (error) {
         toast.error(error.message)
