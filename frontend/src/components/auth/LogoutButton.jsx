@@ -24,8 +24,8 @@ function LogoutButton() {
       dispatch(SignOutUserSuccess(data));
       navigate('/');
     } catch (error) {
+      
       dispatch(SignOutUserFaliure(error.message));
-      console.error('Logout failed', error);
     }
   };
 

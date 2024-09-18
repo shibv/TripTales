@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { data } from "autoprefixer";
-// import { useAuth } from '../../hooks/useAuth';
-// import {login } from '../../services/Helper'
 import { useDispatch, useSelector } from "react-redux";
 import {
   signInStart,
@@ -18,7 +16,7 @@ function LoginForm() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  // const {login : authLogin} = useAuth()
+ 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
