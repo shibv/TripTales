@@ -1,7 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-// import cors from 'cors';
+ import cors from 'cors';
 import authRouter from './routes/auth.route.js' 
 import userRouter from './routes/user.route.js' 
 import itineraryRouter from './routes/itinerary.route.js'
@@ -23,15 +23,15 @@ const __dirname = path.resolve();
 const app = express();
 
 // CORS configuration
-// app.use(cors({
-//     origin: 'http://localhost:5173', // or your frontend URL
-//     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-//     allowedHeaders: ['Content-Type', 'Authorization'],
-//     credentials: true,
-//   }));
+app.use(cors({
+    origin: 'http://localhost:5173', // or your frontend URL
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true,
+  }));
   
-//   // Handle preflight requests
-//   app.options('*', cors());
+  // Handle preflight requests
+  app.options('*', cors());
 // // Middleware
 app.use(express.json());
 app.use(cookieParser());
