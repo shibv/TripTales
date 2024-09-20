@@ -35,6 +35,7 @@ function LoginForm() {
         toast.error(`Something Went Wrong : ${data.message}`);
         return;
       }
+      console.log(data);
       dispatch(signInSuccess(data));
       toast.success("Sign in success");
 

@@ -10,16 +10,17 @@ function ItineraryList() {
   useEffect(() => {
     const fetchItineraries = async () => {
       try {
-        const response = await fetch(`/api/itinerary/?user=${currentUser}`, {
+        const token = currentUser?.token;
+        const response = await fetch(`/api/itinerary/`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
             // Add any other headers if necessary
           },
+          user: FormData,
         });
 
         const data = await response.json();
-
         setItineraries(data);
       } catch (error) {
         console.error("Error fetching itineraries:", error);
