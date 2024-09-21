@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import { data } from "autoprefixer";
 import { useDispatch, useSelector } from "react-redux";
 import {
   signInStart,
@@ -12,16 +11,15 @@ import {
 function LoginForm() {
   const [formData, setFormData] = useState({});
   const { loading, error } = useSelector((state) => state.user);
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
- 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       dispatch(signInStart());
+      
+      // Make login API call
       const response = await fetch("/api/auth/signin", {
         method: "POST",
         headers: {
@@ -29,20 +27,20 @@ function LoginForm() {
         },
         body: JSON.stringify(formData),
       });
-      const data = await response.json();
-      if (!data) {
-        dispatch(signInFaliure(data.message));
-        toast.error(`Something Went Wrong : ${data.message}`);
-        return;
-      }
-      console.log(data);
-      dispatch(signInSuccess(data));
-      toast.success("Sign in success");
 
-      navigate("/dashboard");
+      const data = await response.json();
+
+      if (response.ok) {
+        dispatch(signInSuccess(data));
+        toast.success("Sign in success");
+        navigate("/dashboard");
+      } else {
+        dispatch(signInFaliure(data.message));
+        toast.error(`Login Failed: ${data.message}`);
+      }
     } catch (error) {
-      dispatch(signInFaliure(data.message));
-      toast.error(`Something Went Wrong : ${data.message}`);
+      dispatch(signInFaliure("An unexpected error occurred."));
+      toast.error("An unexpected error occurred.");
     }
   };
 
@@ -105,6 +103,11 @@ function LoginForm() {
             </button>
           </div>
         </form>
+        {error && (
+          <p className="text-red-500 text-sm mt-3">
+            {error}
+          </p>
+        )}
         <div className="mt-6 text-center">
           <p className="text-sm text-gray-600">
             Don't have an account?{" "}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateProfile } from '../services/Helper'
+
 import { 
   updateUserStart, 
   updateUserSuccess, 
@@ -21,7 +21,7 @@ function Profile() {
       interests: []
     }
   });
-console.log(currentUser)
+
   useEffect(() => {
     if (currentUser) {
       setFormData({
@@ -69,9 +69,7 @@ console.log(currentUser)
     e.preventDefault();
     try {
         dispatch(updateUserStart())
-        //  const response = await updateProfile(formData)
         formData.id = currentUser._id
-        // const response = await updateProfile(formData)
         const res = await fetch(`/api/user/profile`, {
           method: "PUT",
           headers: {
@@ -100,6 +98,10 @@ console.log(currentUser)
 
   if (!currentUser) {
     toast.error("No user logged in")
+  }
+
+  if (!currentUser && !loading) {
+    return <div>Please log in first. </div>;  // You can add a redirect to login page here
   }
 
   return (

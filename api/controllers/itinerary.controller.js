@@ -4,7 +4,8 @@ import { errorHandler } from '../utils/error.js';
 export const createItinerary = async (req, res, next) => {
   try {
     const { destination, startDate, endDate, travelers, interests, budget, specialRequirements, locations } = req.body; // Added locations
-    console.log(req.body)
+   
+
     const newItinerary = new Itinerary({
       destination,
       startDate,
@@ -26,8 +27,8 @@ export const createItinerary = async (req, res, next) => {
 
 export const getItineraries = async (req, res, next) => {
   try {
-   console.log(req.user, req.body , "User id")
-    const itineraries = await Itinerary.find({ userId: req.user.id }).populate('destination');
+   console.log(req.params.id , "User--- id")
+    const itineraries = await Itinerary.find({ userId: req.params.id}).populate('destination');
     res.status(200).json(itineraries);
   } catch (error) {
     next(error);
@@ -86,7 +87,7 @@ export const deleteItinerary = async (req, res, next) => {
     s
     res.status(200).json({ message: 'Itinerary has been deleted successfully' });
   } catch (error) {
-    console.error('Error deleting itinerary:', error);
+   
     next(error); // Pass the error to the global error handler
   }
 };

@@ -26,7 +26,7 @@ function SignupForm() {
     }
     setLoading(false)
     setError(null);
-    navigate("/dashboard")
+    navigate("/login")
    } catch (error) {
     
       setLoading(false);
