@@ -21,7 +21,7 @@ function Profile() {
       interests: []
     }
   });
-
+console.log(currentUser)
   useEffect(() => {
     if (currentUser) {
       setFormData({

@@ -71,14 +71,23 @@ export const updateItinerary = async (req, res, next) => {
 
 export const deleteItinerary = async (req, res, next) => {
   try {
+    // Check if the itinerary exists
     const itinerary = await Itinerary.findById(req.params.id);
-    if (!itinerary) return next(errorHandler(404, 'Itinerary not found'));
-    if (itinerary.user.toString() !== req.user.id) {
+    if (!itinerary) {
+      return next(errorHandler(404, 'Itinerary not found'));
+    }
+
+    // Ensure the user deleting the itinerary is the owner
+    if (itinerary.userId.toString() !== req.user.id) {
       return next(errorHandler(401, 'You can only delete your own itineraries'));
     }
+
+    // Delete the itinerary
     await Itinerary.findByIdAndDelete(req.params.id);
-    res.status(200).json('Itinerary has been deleted');
+    s
+    res.status(200).json({ message: 'Itinerary has been deleted successfully' });
   } catch (error) {
-    next(error);
+    console.error('Error deleting itinerary:', error);
+    next(error); // Pass the error to the global error handler
   }
 };

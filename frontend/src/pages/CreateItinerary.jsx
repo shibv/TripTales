@@ -12,13 +12,26 @@ import SpecialRequirements from '../components/itinerary/SpecialRequirements'
 
 // Sample locations (this could be fetched from an API)
 const allLocationOptions = [
-  { value: { lat: 40.7128, lng: -74.0060 }, label: 'New York, USA' },
-  { value: { lat: 34.0522, lng: -118.2437 }, label: 'Los Angeles, USA' },
-  { value: { lat: 51.5074, lng: -0.1278 }, label: 'London, UK' },
-  { value: { lat: 48.8566, lng: 2.3522 }, label: 'Paris, France' },
-  { value: { lat: 35.6762, lng: 139.6503 }, label: 'Tokyo, Japan' },
-  // Add more locations as needed
+  { value: { lat: 28.6139, lng: 77.2090 }, label: 'New Delhi, India' }, // India Gate, Rashtrapati Bhavan
+  { value: { lat: 27.1751, lng: 78.0421 }, label: 'Agra, India' }, // Taj Mahal
+  { value: { lat: 26.9124, lng: 75.7873 }, label: 'Jaipur, India' }, // Amer Fort, City Palace
+  { value: { lat: 12.9716, lng: 77.5946 }, label: 'Bengaluru, India' }, // Lalbagh Botanical Garden, Bangalore Palace
+  { value: { lat: 19.0760, lng: 72.8777 }, label: 'Mumbai, India' }, // Gateway of India, Marine Drive
+  { value: { lat: 22.5726, lng: 88.3639 }, label: 'Kolkata, India' }, // Victoria Memorial, Howrah Bridge
+  { value: { lat: 15.2993, lng: 74.1240 }, label: 'Goa, India' }, // Baga Beach, Basilica of Bom Jesus
+  { value: { lat: 13.0827, lng: 80.2707 }, label: 'Chennai, India' }, // Marina Beach, Kapaleeshwarar Temple
+  { value: { lat: 21.1702, lng: 72.8311 }, label: 'Surat, India' }, // Dumas Beach, Science Centre
+  { value: { lat: 25.3176, lng: 82.9739 }, label: 'Varanasi, India' }, // Kashi Vishwanath Temple, Ganges River Ghats
+  { value: { lat: 8.5241, lng: 76.9366 }, label: 'Thiruvananthapuram, India' }, // Kovalam Beach, Padmanabhaswamy Temple
+  { value: { lat: 23.0225, lng: 72.5714 }, label: 'Ahmedabad, India' }, // Sabarmati Ashram, Sidi Saiyyed Mosque
+  { value: { lat: 30.7333, lng: 76.7794 }, label: 'Chandigarh, India' }, // Rock Garden, Sukhna Lake
+  { value: { lat: 11.9416, lng: 79.8083 }, label: 'Pondicherry, India' }, // Promenade Beach, Auroville
+  { value: { lat: 32.2190, lng: 76.3234 }, label: 'Dharamshala, India' }, // Dalai Lama Temple, Bhagsu Waterfall
+  { value: { lat: 32.2396, lng: 77.1887 }, label: 'Manali, India' }, // Solang Valley, Rohtang Pass
+  { value: { lat: 34.0837, lng: 74.7973 }, label: 'Srinagar, India' }, // Dal Lake, Shalimar Bagh
+  { value: { lat: 10.8505, lng: 76.2711 }, label: 'Kerala, India' }, // Alleppey Backwaters, Munnar
 ];
+
 
 function CreateItinerary() {
   const [step, setStep] = useState(1);
