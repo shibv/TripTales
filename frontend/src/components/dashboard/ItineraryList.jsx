@@ -41,7 +41,7 @@ function ItineraryList() {
     const fetchItineraries = async () => {
       try {
         const token = currentUser?.token;
-        const response = await fetch(`/api/itinerary/`, {
+        const response = await fetch(`/api/itinerary`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",

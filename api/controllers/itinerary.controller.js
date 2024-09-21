@@ -25,7 +25,6 @@ export const createItinerary = async (req, res, next) => {
 };
 
 export const getItineraries = async (req, res, next) => {
-   console.log("Itinaeries Hello !!")
   try {
    console.log(req.user, req.body , "User id")
     const itineraries = await Itinerary.find({ userId: req.user.id }).populate('destination');

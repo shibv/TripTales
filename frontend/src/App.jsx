@@ -21,6 +21,8 @@ import SignupForm from "./components/auth/SignupForm.jsx";
 // import ProtectedRoute from './components/auth/ProtectedRoute.jsx';
 
 function App() {
+
+  
   return (
 
     <Router>
