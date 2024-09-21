@@ -19,7 +19,7 @@ function ItineraryList() {
         },
       });
 
-      if (response.ok) {
+      if (response) {
         // Filter out the deleted itinerary from the state
         setItineraries(itineraries.filter(itinerary => itinerary._id !== id));
         toast.success("Itinerary deleted successfully!");
