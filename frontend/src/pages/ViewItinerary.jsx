@@ -81,7 +81,7 @@ function ViewItinerary() {
           {/* You can add more sections here as needed, such as a detailed day-by-day plan if that's part of your itinerary data */}
           <div className="mt-8">
             <h3 className="text-xl font-semibold mb-4">Travel Route</h3>
-            <ItineraryMap destinations={itinerary.locations} destination= { itinerary.destination } />
+            <ItineraryMap destinations={itinerary.locations} finaldestination= { itinerary.destination } />
           </div>
         </div>
       </div>)  : (

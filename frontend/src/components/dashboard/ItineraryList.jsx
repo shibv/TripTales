@@ -36,14 +36,14 @@ function ItineraryList() {
 
   const fetchItineraries = async () => {
     try {
-      console.log("Current User:", currentUser);
-      
-     
-      const id = currentUser._id;
-      if (!id) {
+      if (!currentUser) {
         setError("User is not authenticated.");
         return;
       }
+      
+     
+      const id = currentUser._id;
+      
 
       const response = await fetch(`/api/itinerary/all/${id}`, {
         method: "GET",

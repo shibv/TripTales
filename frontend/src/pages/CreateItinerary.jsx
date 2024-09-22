@@ -37,6 +37,7 @@ function CreateItinerary() {
   const [step, setStep] = useState(1);
   const [itineraryData, setItineraryData] = useState({ locations: [], destination: null });
   const [selectedLocations, setSelectedLocations] = useState([]);
+  const [selectedDestination, setSelectedDestination] = useState(null);
   const navigate = useNavigate();
 
   const nextStep = () => setStep(step + 1);
@@ -51,6 +52,10 @@ function CreateItinerary() {
         location: option.value
       }))
     }));
+
+    if (selectedOptions.length > 0) {
+      setSelectedDestination(selectedOptions[selectedOptions.length - 1].label);
+    }
   };
 
   const handleSubmit = async (finalData) => {
@@ -102,7 +107,7 @@ function CreateItinerary() {
         {step === 2 && <TripDetails onNext={(data) => { setItineraryData({ ...itineraryData, ...data }); nextStep(); }} onPrev={prevStep} />}
         {step === 3 && <PreferencesForm onNext={(data) => { setItineraryData({ ...itineraryData, ...data }); nextStep(); }} onPrev={prevStep} />}
         {step === 4 && <SpecialRequirements onSubmit={handleSubmit} onPrev={prevStep} />}
-        <ItineraryMap destinations={itineraryData.locations} />
+        <ItineraryMap destinations={itineraryData.locations} destination={selectedDestination} />
       </div>
     </div>
   );

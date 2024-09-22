@@ -22,7 +22,7 @@ import SignupForm from "./components/auth/SignupForm.jsx";
 
 function App() {
 
-  
+
   return (
 
     <Router>

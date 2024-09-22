@@ -33,10 +33,11 @@ const ChangeView = ({ center, zoom }) => {
   return null;
 };
 
-const ItineraryMap = ({ destinations, destination }) => {
+const ItineraryMap = ({ destinations, destination, finaldestination }) => {
   // Find the selected destination's coordinates, or use the default center
+
   const selectedDestination = destinations.find(dest => dest.name === destination);
-  const center = selectedDestination ? selectedDestination.location : { lat: 0, lng: 0 };
+  const center = selectedDestination ? selectedDestination.location : { lat: 20.5937, lng: 78.9629 }; // Default center to India
   const zoom = selectedDestination ? 10 : 5; // Zoom in when a destination is selected
 
   return (
@@ -45,7 +46,7 @@ const ItineraryMap = ({ destinations, destination }) => {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       />
-      
+
       {/* Change map view when destination is selected */}
       <ChangeView center={center} zoom={zoom} />
 
@@ -53,7 +54,7 @@ const ItineraryMap = ({ destinations, destination }) => {
         <Marker
           key={index}
           position={dest.location}
-          icon={dest.name === destination ? customIcon : new L.Icon.Default()} // Use the custom icon for the matched destination
+          icon={dest.name === finaldestination ? customIcon : new L.Icon.Default()} // Use the custom icon for the matched destination
         >
           <Popup>{dest.name}</Popup>
         </Marker>
