@@ -38,11 +38,13 @@ function ItineraryList() {
     try {
       console.log("Current User:", currentUser);
       
-      if (!currentUser) {
+     
+      const id = currentUser._id;
+      if (!id) {
         setError("User is not authenticated.");
         return;
       }
-      const id = currentUser._id;
+
       const response = await fetch(`/api/itinerary/all/${id}`, {
         method: "GET",
         headers: {

@@ -77,7 +77,7 @@ function CreateItinerary() {
         <h2 className="text-3xl font-bold text-gray-900 mb-6">Create Your Itinerary</h2>
 
         {/* Location Selection */}
-        <div className="mb-4">
+        {step === 1 && <div className="mb-4">
           <label className="block text-sm font-medium text-gray-700">Select Locations</label>
           <Select
             options={allLocationOptions}
@@ -85,7 +85,7 @@ function CreateItinerary() {
             onChange={handleLocationChange}
             placeholder="Select multiple locations..."
           />
-        </div>
+        </div> }
 
         {/* Destination Selection from Selected Locations */}
         {step === 1 && selectedLocations.length >= 0 && (

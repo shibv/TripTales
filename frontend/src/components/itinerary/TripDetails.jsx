@@ -1,13 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState , useRef} from 'react';
 
 function TripDetails({ onNext, onPrev }) {
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
   const [travelers, setTravelers] = useState(1);
+  
+  const startDateRef = useRef(null);
+  const endDateRef = useRef(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     onNext({ startDate, endDate, travelers });
+  };
+
+
+  const handleStartDateFocus = () => {
+    startDateRef.current.showPicker(); // May vary based on browser
+  };
+
+  const handleEndDateFocus = () => {
+    endDateRef.current.showPicker(); // May vary based on browser
   };
 
   return (
@@ -18,6 +30,8 @@ function TripDetails({ onNext, onPrev }) {
           type="date"
           id="startDate"
           value={startDate}
+          ref={startDateRef}
+          onClick={handleStartDateFocus}
           onChange={(e) => setStartDate(e.target.value)}
           className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
           required
@@ -29,6 +43,8 @@ function TripDetails({ onNext, onPrev }) {
           type="date"
           id="endDate"
           value={endDate}
+          ref={endDateRef}
+          onClick={handleEndDateFocus}
           onChange={(e) => setEndDate(e.target.value)}
           className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
           required
