@@ -50,6 +50,8 @@ const ItineraryMap = ({ destinations, destination, finaldestination }) => {
       {/* Change map view when destination is selected */}
       <ChangeView center={center} zoom={zoom} />
 
+      
+
       {destinations.map((dest, index) => (
         <Marker
           key={index}

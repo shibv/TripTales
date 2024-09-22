@@ -91,3 +91,45 @@ export const deleteItinerary = async (req, res, next) => {
     next(error); // Pass the error to the global error handler
   }
 };
+
+
+
+// export const getTopItineraries = async (req, res, next) => {
+//   try {
+//     const topItineraries = await Itinerary.find({})
+//       .sort({ selectionCount: -1 })
+//       .limit(5)
+//       .populate('destination');
+
+//       console.log(topItineraries)
+
+//     if (!topItineraries.length) {
+//       return res.status(404).json({ message: 'No itineraries found' });
+//     }
+
+//     res.status(200).json(topItineraries);
+//   } catch (error) {
+//     console.error('Error fetching top itineraries:', error);
+//     next(error);
+//   }
+// };
+
+export const getTopItineraries = async (req, res, next) => {
+  try {
+    const topItineraries = await Itinerary.find({})
+      .sort({ selectionCount: -1 })
+      .limit(5)
+      .populate('destination');
+
+      console.log(topItineraries)
+
+    if (!topItineraries.length) {
+      return res.status(404).json({ message: 'No itineraries found' });
+    }
+
+    res.status(200).json(topItineraries);
+  } catch (error) {
+    console.error('Error fetching top itineraries:', error);
+    next(error);
+  }
+};

@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { FaMapMarkedAlt, FaUserCircle, FaPlane } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import Globe from "react-globe.gl"; // Import the globe component
+import ItinerarySlider from "../components/dashboard/ItinerarySlider";
+
 
 function FeatureCard({ icon, title, description }) {
   return (
@@ -39,6 +41,7 @@ function Home() {
           height={700}
         />
       </div>
+       {/* <ItinerarySlider /> */}
       <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8">
         <FeatureCard
           icon={<FaMapMarkedAlt className="text-5xl mb-4 text-yellow-400" />}

@@ -2,7 +2,7 @@ import { errorHandler } from "./error.js";
 import jwt from "jsonwebtoken";
 
 export const verifyToken = (req, res, next) => {
-    console.log("Yup Hi !!", req.user, req.body, req.cookies);
+    console.log("JWT TT");
     const token = req.cookies.access_token;
     if(!token){
         return next(errorHandler(410, "Please login first"));
