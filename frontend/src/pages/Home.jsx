@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { FaMapMarkedAlt, FaUserCircle, FaPlane } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import Globe from "react-globe.gl"; // Import the globe component
-import ItinerarySlider from "../components/dashboard/ItinerarySlider";
 
 
 function FeatureCard({ icon, title, description }) {
