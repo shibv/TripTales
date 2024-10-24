@@ -13,7 +13,7 @@ function Header() {
     <header className="bg-indigo-600 text-white">
       <nav className="container mx-auto px-6 py-3 flex justify-between items-center">
         <Link to="/" className="font-bold flex gap-2">
-          <h1 className='text-2xl'>Testing!!</h1> <FaMapMarkedAlt className="text-2xl mb-4 text-black" />
+          <h1 className='text-2xl'>TripTales!!</h1> <FaMapMarkedAlt className="text-2xl mb-4 text-black" />
         </Link>
         <div>
           {currentUser ? (

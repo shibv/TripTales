@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -21,7 +21,9 @@ import SignupForm from "./components/auth/SignupForm.jsx";
 // import ProtectedRoute from './components/auth/ProtectedRoute.jsx';
 
 function App() {
-
+  useEffect(() => {
+    document.title = "TripTales ✈️"; // Set the title here
+  }, []);
 
   return (
 
