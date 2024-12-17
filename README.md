@@ -104,9 +104,5 @@ backend/
    npm start
    ```
 
-## **Future Enhancements**
 
-- **Integration with external APIs** for real-time flight and hotel bookings.
-- **Itinerary Sharing** sers can share their itineraries with others via social media or email.
-- **Explore Popular Destinations** Users can browse and explore popular travel destinations with detailed descriptions and images.
 
