@@ -1,5 +1,5 @@
 
-# **Trip Tales - Personalized Travel Itinerary Generator**
+# **Trip Tales - **
 
 ## **Introduction**
 **Trip Tales** is a full-stack web application built using the MERN stack (MongoDB, Express.js, React, Node.js). The project provides a comprehensive platform for users to create, manage, and share personalized travel itineraries based on preferences like budget, interests, and trip duration.
